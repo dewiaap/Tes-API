@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <title></title>
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+        <center>
+        <h1>Tes Api</h1>
+        <table id="table" border="1">
+            <tr>
+                <th>Id</th>
+                <th>Nama Pegawai</th>
+                <th>Gaji</th>
+                <th>umur</th>
+            </tr>
+        </table>
+    </center>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script>
+        $.ajax({url: "http://dummy.restapiexample.com/api/v1/employees", success: function(res){
+        var temp = JSON.parse(res);
+        temp.forEach(e => {
+            var cols = "";
+                cols += "<tr>";
+                cols += "<td>" + e.id + "</td>";
+                cols += "<td>" + e.employee_name + "</td>";
+                cols += "<td>" + e.employee_salary + "</td>";
+                cols += "<td>" + e.employee_age + "</td>";
+                cols += "</tr>";
+            $('#table').append(cols);
+        });
+        }});
+        </script>
+    </body>
+</html>
